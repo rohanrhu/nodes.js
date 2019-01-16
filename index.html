@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no,user-scalable=0"/>
+
+    <title>nodes.js - js connected nodes animation</title>
+    <meta name="description" content="nodes.js is a nodes/particles animation useable for backgrounds">
+    <meta name="keywords" content="nodes, animation, particlees, web, html5, canvas, backgorund">
+
+    <style type="text/css">
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        body {
+            font-family: 'Arial';
+            font-size: 14px;
+            line-height: 20px;
+            color: white;
+        }
+
+        .a,
+        .a:visited {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .a:hover {
+        }
+
+        .btn,
+        a.btn,
+        a.btn:visited {
+            text-decoration: none;
+            color: white;
+            display: inline-block;
+            cursor: pointer;
+            border: 1px solid #c1c1c1;
+            border-bottom: 2px solid #c1c1c1;
+            padding: 5px; border-radius: 2px;
+            transition: all 250ms;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            box-shadow: 0px 0px 12px 0px rgba(255,255,255, 0.5);
+            background: rgba(255,255,255,0.3);
+        }
+
+        .mainBox {
+            width: 500px;
+            display: inline-block;
+            border-radius: 2px;
+            background: rgba(255,255,255,0.2);
+            margin-top: 200px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .mainBox {
+                width: 300px;
+            }
+        }
+
+        @media only screen and (max-height: 700px) {
+            .mainBox {
+                margin-top: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- <nodes.js embedding> -->
+    <script type="text/javascript" src="js/nodes.js"></script>
+    <script type="text/javascript">
+        var nodesjs = new NodesJs({
+            id: 'nodes',
+            width: window.innerWidth,
+            height: window.innerHeight,
+            backgroundFrom: [10, 25, 100],
+            backgroundTo: [25, 50, 150],
+            backgroundDuration: 4000,
+            number: window.hasOwnProperty('orientation') ? 30: 100,
+            speed: 20
+        });
+    </script>
+    <div style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%;">
+        <canvas id="nodes"></canvas>
+    </div>
+    <!-- </nodes.js embedding> -->
+
+    <script type="text/javascript">
+        window.onresize = function () {
+            nodesjs.setWidth(window.innerWidth);
+            nodesjs.setHeight(window.innerHeight);
+        };
+    </script>
+
+    <div style="position: relative; z-index: 100;">
+        <div style="text-align: center; font-family: 'Arial';">
+            <div class="mainBox">
+                <div style="font-size: 25px; margin-bottom: 5px; margin-top: 10px; position: relative; display: inline-block; margin-bottom: 10px;">
+                    nodes.js
+                    <div style="font-size: 13px; position: absolute; right: -30px; top: 0px; display: inline-block; color: #9f9f9f;">v1.0</div>
+                </div>
+                <div style="font-size: 13px; margin-bottom: 5px;">
+                    HTML5 Canvas nodes/particles animation with Javascript
+                </div>
+                <div style="font-size: 13px; margin-bottom: 15px;">
+                    <a href="https://github.com/rohanrhu/nodes.js" class="a" target="_blank">
+                        https://github.com/rohanrhu/nodes.js
+                    </a>
+                </div>
+
+                <div style="background: rgba(0,0,0, 0.75); margin-bottom: 25px; text-align: left; padding: 5px; overflow">
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;background: none;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-style: italic">&lt;!-- &lt;nodes.js embedding&gt; --&gt;</span>
+<span style="color: #000080; font-weight: bold">&lt;script </span><span style="color: #FF0000">type=</span><span style="color: #0000FF">&quot;text/javascript&quot;</span> <span style="color: #FF0000">src=</span><span style="color: #0000FF">&quot;js/nodes.js&quot;</span><span style="color: #000080; font-weight: bold">&gt;&lt;/script&gt;</span>
+<span style="color: #000080; font-weight: bold">&lt;script </span><span style="color: #FF0000">type=</span><span style="color: #0000FF">&quot;text/javascript&quot;</span><span style="color: #000080; font-weight: bold">&gt;</span>
+    <span style="color: #000080; font-weight: bold">var</span> nodesjs = <span style="color: #000080; font-weight: bold">new</span> NodesJs({
+        id: <span style="color: #0000FF">&#39;nodes&#39;</span>,
+        width: window.innerWidth,
+        height: window.innerHeight,
+        backgroundFrom: [<span style="color: #0000FF">10</span>, <span style="color: #0000FF">25</span>, <span style="color: #0000FF">100</span>],
+        backgroundTo: [<span style="color: #0000FF">25</span>, <span style="color: #0000FF">50</span>, <span style="color: #0000FF">150</span>],
+        backgroundDuration: <span style="color: #0000FF">4000</span>,
+        number: window.hasOwnProperty(<span style="color: #0000FF">&#39;orientation&#39;</span>) ? <span style="color: #0000FF">30</span>: <span style="color: #0000FF">100</span>,
+        speed: <span style="color: #0000FF">20</span>
+    });
+<span style="color: #000080; font-weight: bold">&lt;/script&gt;</span>
+<span style="color: #000080; font-weight: bold">&lt;canvas</span> <span style="color: #FF0000">id=</span><span style="color: #0000FF">&quot;nodes&quot;</span><span style="color: #000080; font-weight: bold">&gt;&lt;/canvas&gt;</span>
+<span style="color: #008800; font-style: italic">&lt;!-- &lt;/nodes.js embedding&gt; --&gt;</span>
+</pre></div>
+                </div>
+
+                <div style="padding: 10px;">
+                    <a class="btn" href="https://github.com/rohanrhu/nodes.js/archive/master.zip">
+                        Download ZIP
+                    </a>
+
+                    <a class="btn" href="https://github.com/rohanrhu/nodes.js">
+                        Source Code
+                    </a>
+
+                    <div style="font-size: 13px; margin: auto;margin-top: 15px;">
+                        Copyright &copy;
+                        <a href="http://oguzhaneroglu.com" class="a" target="_blank">Oğuzhan Eroğlu</a>,
+                        licensed under <a href="http://opensource.org/licenses/MIT" class="a" target="_blank">MIT</a>.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://github.com/rohanrhu/nodes.js" target="_blank"><img style="position: absolute; z-index: 2000; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+</body>
+</html>
