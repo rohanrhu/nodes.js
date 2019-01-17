@@ -78,19 +78,19 @@ var NodesJs = (function (parameters) {
                 _node[1] += Math.sin(_node[2]) * t_NodesJs.speed * (dt/1000.0);
 
                 if (_node[0] < 0) {
-                    _node[0] = cw;
+                    _node[0] = cw + (_node[0] % cw);
                 }
 
                 if (_node[0] > cw) {
-                    _node[0] = 0;
+                    _node[0] = _node[0] % cw;
                 }
 
                 if (_node[1] < 0) {
-                    _node[1] = ch;
+                    _node[1] = ch + (_node[1] % ch);
                 }
 
                 if (_node[1] > ch) {
-                    _node[1] = 0;
+                    _node[1] = _node[1] % ch;
                 }
 
                 ctx.fillStyle = 'rgba(255,255,255,0.3)';
