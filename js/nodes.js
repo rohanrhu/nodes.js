@@ -49,7 +49,8 @@ var NodesJs = (function (parameters) {
         }
     };
 
-    document.body.onload = function () {
+    window[window.addEventListener ? 'addEventListener': 'attachEvent']
+    (window.addEventListener ? 'load': 'onload', function () {
         canvas = document.getElementById(t_NodesJs.id);
         ctx = canvas.getContext('2d');
 
@@ -135,5 +136,5 @@ var NodesJs = (function (parameters) {
         };
 
         step();
-    };
+    });
 });
