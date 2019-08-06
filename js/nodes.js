@@ -44,7 +44,8 @@ var NodesJs = (function (parameters) {
             t_NodesJs.nodes.push([
                 Math.floor(Math.random() * (cw - 0 + 1)) + 0,
                 Math.floor(Math.random() * (ch - 0 + 1)) + 0,
-                Math.random() * (Math.PI * 2 - 0 + 1) + 0
+                Math.random() * (Math.PI * 2 - 0 + 1) + 0,
+                []
             ]);
         }
     };
@@ -107,9 +108,15 @@ var NodesJs = (function (parameters) {
                 );
                 ctx.fill();
 
+                _node[3] = [];
+
                 t_NodesJs.nodes.forEach(function (_node2, _node2_i) {
                     if (_node_i == _node2_i) {
-                        // return true;
+                        return true;
+                    }
+
+                    if (_node[3].indexOf(_node2_i) > -1) {
+                        return true;
                     }
 
                     var dx = Math.abs(_node[0] - _node2[0]);
@@ -121,6 +128,12 @@ var NodesJs = (function (parameters) {
                     if (d <= 300) {
                         alpha = 0.3 - ((0.3 * d) / 200);
                     }
+
+                    if (alpha == 0) {
+                        return true;
+                    }
+
+                    _node2[3].push(_node_i);
 
                     ctx.strokeStyle = 'rgba(255,255,255,'+alpha+')';
 
