@@ -16,6 +16,7 @@ Visit [project page](https://oguzhaneroglu.com/projects/nodes.js/) for example.
         backgroundFrom: [10, 25, 100],
         backgroundTo: [25, 50, 150],
         backgroundDuration: 4000,
+        nobg: false,
         number: window.hasOwnProperty('orientation') ? 30: 100,
         speed: 20
     });
