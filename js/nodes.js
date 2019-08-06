@@ -18,6 +18,7 @@ var NodesJs = (function (parameters) {
     t_NodesJs.backgroundDuration = parameters.backgroundDuration;
     t_NodesJs.number = parameters.number ? parameters.number: 100;
     t_NodesJs.speed = parameters.speed ? parameters.speed: 20;
+    t_NodesJs.nobg = parameters.nobg ? parameters.nobg: false;
 
     var canvas;
     var ctx;
@@ -66,14 +67,18 @@ var NodesJs = (function (parameters) {
         var step = function () {
             window.requestAnimationFrame(step);
 
-            var r = Math.floor(((Math.sin(Math.PI * 2 * Date.now() / t_NodesJs.backgroundDuration - Math.PI/2)+1)/2) * (t_NodesJs.backgroundFrom[0] - t_NodesJs.backgroundTo[0] + 1) + t_NodesJs.backgroundTo[0]);
-            var g = Math.floor(((Math.sin(Math.PI * 2 * Date.now() / t_NodesJs.backgroundDuration - Math.PI/2)+1)/2) * (t_NodesJs.backgroundFrom[1] - t_NodesJs.backgroundTo[1] + 1) + t_NodesJs.backgroundTo[1]);
-            var b = Math.floor(((Math.sin(Math.PI * 2 * Date.now() / t_NodesJs.backgroundDuration - Math.PI/2)+1)/2) * (t_NodesJs.backgroundFrom[2] - t_NodesJs.backgroundTo[2] + 1) + t_NodesJs.backgroundTo[2]);
+            ctx.clearRect(0, 0, cw, ch);
 
-            ctx.beginPath();
-            ctx.fillStyle = 'rgb('+r+', '+g+', '+b+')';
-            ctx.fillRect(0, 0, cw, ch);
-            ctx.fill();
+            if (!t_NodesJs.nobg) {
+                var r = Math.floor(((Math.sin(Math.PI * 2 * Date.now() / t_NodesJs.backgroundDuration - Math.PI/2)+1)/2) * (t_NodesJs.backgroundFrom[0] - t_NodesJs.backgroundTo[0] + 1) + t_NodesJs.backgroundTo[0]);
+                var g = Math.floor(((Math.sin(Math.PI * 2 * Date.now() / t_NodesJs.backgroundDuration - Math.PI/2)+1)/2) * (t_NodesJs.backgroundFrom[1] - t_NodesJs.backgroundTo[1] + 1) + t_NodesJs.backgroundTo[1]);
+                var b = Math.floor(((Math.sin(Math.PI * 2 * Date.now() / t_NodesJs.backgroundDuration - Math.PI/2)+1)/2) * (t_NodesJs.backgroundFrom[2] - t_NodesJs.backgroundTo[2] + 1) + t_NodesJs.backgroundTo[2]);
+
+                ctx.beginPath();
+                ctx.fillStyle = 'rgb('+r+', '+g+', '+b+')';
+                ctx.fillRect(0, 0, cw, ch);
+                ctx.fill();
+            }
             
             t_NodesJs.nodes.forEach(function (_node, _node_i) {
                 _node[0] += Math.cos(_node[2]) * t_NodesJs.speed * (dt/1000.0);
