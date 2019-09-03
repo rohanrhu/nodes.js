@@ -19,6 +19,7 @@ var NodesJs = (function (parameters) {
     t_NodesJs.number = parameters.number ? parameters.number: 100;
     t_NodesJs.speed = parameters.speed ? parameters.speed: 20;
     t_NodesJs.nobg = parameters.nobg ? parameters.nobg: false;
+    t_NodesJs.pointerCircleRadius = parameters.pointerCircleRadius ? parameters.pointerCircleRadius: 150;
 
     var canvas;
     var ctx;
@@ -27,6 +28,8 @@ var NodesJs = (function (parameters) {
 
     var t0 = Date.now();
     var dt = 0;
+
+    t_NodesJs.nodes = [];
 
     t_NodesJs.setWidth = function (width) {
         canvas.width = width;
@@ -50,6 +53,63 @@ var NodesJs = (function (parameters) {
             ]);
         }
     };
+
+    var isPositive = function (num) {
+        return num >= 0;
+    };
+
+    var isNetagive = function (num) {
+        return num <= -1;
+    };
+
+    t_NodesJs.pointerCircleRadius
+    &&
+    window.addEventListener('mousemove', function (event) {
+        if (!t_NodesJs.nodes.length) {
+            return;
+        }
+
+        var mx = event.clientX;
+        var my = event.clientY;
+
+        t_NodesJs.nodes.forEach(function (_node, _node_i) {
+            var nx = _node[0];
+            var ny = _node[1];
+
+            var xsig = nx - mx;
+            var ysig = ny - my;
+
+            var ndx = Math.abs(xsig);
+            var ndy = Math.abs(ysig);
+
+            var nh = Math.sqrt(Math.pow(ndx, 2) + Math.pow(ndy, 2));
+
+            var angle = Math.acos(ndx / nh);
+            if (isPositive(xsig) && isNetagive(ysig)) {
+            } else if (isNetagive(xsig) && isNetagive(ysig)) {
+                angle = ((Math.PI/2) - angle) + (Math.PI/2);
+            } else if (isNetagive(xsig) && isPositive(ysig)) {
+                angle = angle + Math.PI;
+            } else if (isPositive(xsig) && isPositive(ysig)) {
+                angle = ((Math.PI/2) - angle) + (Math.PI*(3/2));
+            }
+
+            angle = (Math.PI*2) - angle;
+
+            var rx = mx + Math.cos(angle) * t_NodesJs.pointerCircleRadius;
+            var ry = my + Math.sin(angle) * t_NodesJs.pointerCircleRadius;
+
+            var mdx = Math.abs(rx - mx);
+            var mdy = Math.abs(ry - my);
+
+            var mh = Math.sqrt(Math.pow(mdx, 2) + Math.pow(mdy, 2));
+
+            if (nh < mh) {
+                _node[0] = Math.floor(rx);
+                _node[1] = Math.floor(ry);
+            }
+        });
+    });
 
     window[window.addEventListener ? 'addEventListener': 'attachEvent']
     (window.addEventListener ? 'load': 'onload', function () {

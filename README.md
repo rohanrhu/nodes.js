@@ -18,7 +18,8 @@ Visit [project page](https://oguzhaneroglu.com/projects/nodes.js/) for example.
         backgroundDuration: 4000,
         nobg: false,
         number: window.hasOwnProperty('orientation') ? 30: 100,
-        speed: 20
+        speed: 20,
+        pointerCircleRadius: 150
     });
 </script>
 <canvas id="nodes"></canvas>
