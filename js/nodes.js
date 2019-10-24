@@ -13,6 +13,10 @@ var NodesJs = (function (parameters) {
     t_NodesJs.id = parameters.id;
     t_NodesJs.width = parameters.width;
     t_NodesJs.height = parameters.height;
+    t_NodesJs.particleSize = parameters.particleSize ? parameters.particleSize: 2;
+    t_NodesJs.lineSize = parameters.lineSize ? parameters.lineSize: 1;
+    t_NodesJs.particleColor = parameters.particleColor ? 'rgba('+parameters.particleColor.join(',')+')': 'rgba(255,255,255,0.3)';
+    t_NodesJs.lineColor = parameters.lineColor ? parameters.lineColor: '255,255,255';
     t_NodesJs.backgroundFrom = parameters.backgroundFrom;
     t_NodesJs.backgroundTo = parameters.backgroundTo;
     t_NodesJs.backgroundDuration = parameters.backgroundDuration;
@@ -160,13 +164,13 @@ var NodesJs = (function (parameters) {
                     _node[1] = _node[1] % ch;
                 }
 
-                ctx.fillStyle = 'rgba(255,255,255,0.3)';
+                ctx.fillStyle = t_NodesJs.particleColor;
 
                 ctx.beginPath();
                 ctx.arc(
                     _node[0],
                     _node[1],
-                    2,
+                    t_NodesJs.particleSize,
                     0,
                     Math.PI * 2,
                     true
@@ -200,7 +204,8 @@ var NodesJs = (function (parameters) {
 
                     _node2[3].push(_node_i);
 
-                    ctx.strokeStyle = 'rgba(255,255,255,'+alpha+')';
+                    ctx.strokeStyle = 'rgba('+t_NodesJs.lineColor+','+alpha+')';
+                    ctx.lineWidth = t_NodesJs.lineSize;
 
                     ctx.beginPath();
                     ctx.moveTo(_node[0], _node[1]);

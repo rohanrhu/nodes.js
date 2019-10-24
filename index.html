@@ -79,6 +79,10 @@
             id: 'nodes',
             width: window.innerWidth,
             height: window.innerHeight,
+            particleSize: 2,
+            lineSize: 1,
+            particleColor: [255, 255, 255, 0.3],
+            lineColor: [255, 255, 255],
             backgroundFrom: [10, 25, 100],
             backgroundTo: [25, 50, 150],
             backgroundDuration: 4000,
@@ -104,7 +108,7 @@
             <div class="mainBox">
                 <div style="font-size: 25px; margin-bottom: 5px; margin-top: 10px; position: relative; display: inline-block; margin-bottom: 10px;">
                     nodes.js
-                    <div style="font-size: 13px; position: absolute; right: -30px; top: 0px; display: inline-block; color: #9f9f9f;">v1.4</div>
+                    <div style="font-size: 13px; position: absolute; right: -30px; top: 0px; display: inline-block; color: #9f9f9f;">v1.5</div>
                 </div>
                 <div style="font-size: 13px; margin-bottom: 5px;">
                     HTML5 Canvas nodes/particles animation with Javascript
@@ -123,13 +127,16 @@
         id: <span style="color: #0000FF">&#39;nodes&#39;</span>,
         width: window.innerWidth,
         height: window.innerHeight,
+        particleSize: <span style="color: #0000FF">2</span>,
+        lineSize: <span style="color: #0000FF">1</span>,
+        particleColor: [<span style="color: #0000FF">255</span>, <span style="color: #0000FF">255</span>, <span style="color: #0000FF">255</span>, <span style="color: #0000FF">0.3</span>],
+        lineColor: [<span style="color: #0000FF">255</span>, <span style="color: #0000FF">255</span>, <span style="color: #0000FF">255</span>],
         backgroundFrom: [<span style="color: #0000FF">10</span>, <span style="color: #0000FF">25</span>, <span style="color: #0000FF">100</span>],
         backgroundTo: [<span style="color: #0000FF">25</span>, <span style="color: #0000FF">50</span>, <span style="color: #0000FF">150</span>],
         backgroundDuration: <span style="color: #0000FF">4000</span>,
         nobg: <span style="color: #000080; font-weight: bold">false</span>,
         number: window.hasOwnProperty(<span style="color: #0000FF">&#39;orientation&#39;</span>) ? <span style="color: #0000FF">30</span>: <span style="color: #0000FF">100</span>,
-        speed: <span style="color: #0000FF">20</span>,
-        pointerCircleRadius: <span style="color: #0000FF">150</span>
+        speed: <span style="color: #0000FF">20</span>
     });
 <span style="color: #000080; font-weight: bold">&lt;/script&gt;</span>
 <span style="color: #000080; font-weight: bold">&lt;canvas</span> <span style="color: #FF0000">id=</span><span style="color: #0000FF">&quot;nodes&quot;</span><span style="color: #000080; font-weight: bold">&gt;&lt;/canvas&gt;</span>
