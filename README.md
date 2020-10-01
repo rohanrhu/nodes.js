@@ -1,3 +1,4 @@
+$#Welcome to node.jd
 # nodes.js
 nodes.js is a nodes/particles animation useable for backgrounds
 
